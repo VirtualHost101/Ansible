@@ -1,0 +1,5 @@
+{
+  "ansible.python.interpreterPath": "c:\\Users\\Satyatej\\AppData\\Local\\Microsoft\\WindowsApps\\python3.11.exe",
+  "editor.defaultFormatter": "pulumi.pulumi-lsp-client",
+  "editor.formatOnSave": true
+}

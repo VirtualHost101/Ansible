@@ -16,6 +16,17 @@ ansible --version
 # setting up nodes
 
 anisble all -m ping { check for connection }
+
+# Generate a key
+ssh-keygen
+
+# copy ssh key from master to authorize key hosts
+cp ./ssh/id_rsa.pub ./sshautorizedkeys
+
+
+
+
+
 # Inventory 
 => It's a file which has collection of all the servers (worker nodes)
 default location  :/etc/ansible/hosts
@@ -41,3 +52,13 @@ ansible --list-hosts -i myhosts.ini grp1
 
 # Adhoc Commands 
 ansible all --list-hosts {list all the hosts}
+ansible all -m ping {ping module to check connectivity}
+ansible all -m commad -a "date" {check for date}
+ansible all -m commad -a "free -m"{check for free space}
+
+Privilages
+add -b in Adhoc Commands
+in Playbooks become = true
+
+# what are Playbooks?
+=> deployment and orchestration language

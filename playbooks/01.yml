@@ -1,0 +1,7 @@
+---
+- hosts: app
+  tasks:
+  - name: Copy hosts files
+    copy:
+      src: /home/ec2-user/myhosts.ini
+      dest:/home/ec2-user/myhosts.ini
