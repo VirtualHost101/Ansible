@@ -1,0 +1,43 @@
+Ansible is a push based config system.
+No need of agent configuration.
+configuration is set using YAML { English Like }.
+Architecture is saimple, Easy to get started with.
+Simple SSH is all we need.
+Ansible is build on Python
+
+2 things to remember - Inventory and Playbooks.
+
+# Installing Ansible 
+sudo dnf install -y ansible-core
+
+# Checking Version
+ansible --version
+
+# setting up nodes
+
+anisble all -m ping { check for connection }
+# Inventory 
+=> It's a file which has collection of all the servers (worker nodes)
+default location  :/etc/ansible/hosts
+
+If you want to group the severs pass "" [ ]  "" square brackets.
+eg [web]
+192.168.100.0
+192.168.100.1
+192.168.100.2
+192.168.100.3
+
+group the group servers
+eg [ecomm:children]
+web
+app
+
+# Creating own Inventory (dynamic Inventory)
+create a file "myhosts.ini"
+
+# calling personal Inventory file pass "-i" flag
+eg : ansible --list-hosts -i myhosts.ini all
+ansible --list-hosts -i myhosts.ini grp1
+
+# Adhoc Commands 
+ansible all --list-hosts {list all the hosts}
