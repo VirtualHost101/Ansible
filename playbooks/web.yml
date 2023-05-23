@@ -1,0 +1,22 @@
+---
+- hosts: app
+  become: yes
+  tasks:
+    - name: Common packages
+      ansible.builtin.package:
+        state: present
+        name:
+          - git
+          - wget
+          - unzip
+          - vim
+          - httpd
+
+    - name: Start httpd
+      service:
+        state: present
+
+    - name: updating pages
+      copy:
+        src: /home/ec2-user/ecomm-website
+        dest: /var/www/html
