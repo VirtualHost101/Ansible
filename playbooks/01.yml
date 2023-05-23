@@ -1,6 +1,6 @@
 ---
 - hosts: app
-  become: yes
+  become: True
   tasks:
     - name: Copy Dynamic inventory
       copy:
@@ -16,3 +16,7 @@
       copy:
         src: /home/ec2-user/myhosts.ini
         dest: /opt/serveewr.txt
+    - name:
+      copy:
+        src: /home/ec2-user/myhosts.ini
+        dest: /home/ec2-user/service.yml
