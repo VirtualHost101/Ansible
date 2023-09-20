@@ -62,3 +62,25 @@ in Playbooks become = true
 
 # what are Playbooks?
 => deployment and orchestration language
+
+modules in ansible
+======================
+1. Command
+2. shell
+3. ping
+4. file - touch, mkdir, chmod, rm, chown. chgrp etc on any number of servers
+5. copy - scp Command
+6. fetch - getting node information
+7. user
+8. apt/yum
+9. git 
+10. get_url - wget 
+11. service
+12. uri - if remote node are rechable or not
+13. replace - edit only few lines in file
+14. stat - metadata of the folder
+15. debug - print or echo
+16. pause 
+17. docker_container
+18. docker_image
+19. docker_login
