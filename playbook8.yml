@@ -1,0 +1,9 @@
+---
+- name: using host variables
+  hosts: web
+  tasks:
+    - name: fire wall d
+      apt:
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"

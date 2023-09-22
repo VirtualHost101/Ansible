@@ -1,0 +1,12 @@
+---
+- name: hostvars
+  hosts: 172.31.31.147
+  tasks:
+    - name: trying host vars
+      user:
+        name: "{{a}}"
+        password: "{{b}}"
+        uid: "{{c}}"
+        home: "{{d}}"
+        shell: "{{e}}"
+        comment: "{{f}}"

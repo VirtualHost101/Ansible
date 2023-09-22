@@ -1,0 +1,15 @@
+---
+- name: Fectching content from server 1 to master
+  hosts: 172.31.17.25
+  tasks:
+    - name: fetch src
+      ansible.builtin.fetch: 
+        src: /var/lib/tomcat9/webapps/ROOT/index.html
+        dest: /tmp 
+- name: Copyin from master to server 2
+  hosts: 172.31.31.147
+  tasks: 
+    - name: copy
+      copy:
+        src: /tmp/172.31.17.25/var/lib/tomcat9/webapps/ROOT/index.html
+        dest: /var/lib/tomcat9/webapps/ROOT/

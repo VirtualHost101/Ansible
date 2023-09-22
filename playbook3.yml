@@ -1,0 +1,37 @@
+---
+- name: configuring tomcat
+  hosts: all
+  tasks:
+    - name: intall tomcat9
+      apt: 
+        name: tomcat9
+        state: present
+        update_cache: yes
+    - name: install tomcat9-admin
+      apt:
+        name: tomcat9-admin
+        state: present
+    - name: copy tomcat-users.xml
+      copy: 
+        src: tomcat-users.xml
+        dest: /etc/tomcat9
+    - name: change port from 8080 to 9090
+      replace: 
+        regexp: 8080
+        replace: 9090
+        path: /etc/tomcat9/server.xml
+    - name: restart tomcat9
+      service: 
+        name: tomcat9
+        state: restarted
+    - name: pasue for 1 min
+      pause:
+        minutes: 1
+    - name: check uri on serv1
+      uri:
+        url: http://172.31.17.25:9090
+        status_code: 200
+    - name: check uri on serv2
+      uri:
+        url: http://172.31.31.147:9090
+        status_code: 200  
