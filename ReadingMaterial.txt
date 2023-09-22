@@ -84,3 +84,8 @@ modules in ansible
 17. docker_container
 18. docker_image
 19. docker_login
+
+
+Syntax of Adhoc Commands
+=========================
+works on single or IPaddress or Group_name
