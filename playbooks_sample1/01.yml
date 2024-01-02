@@ -1,0 +1,31 @@
+---
+- hosts: app
+  become: True
+  tasks:
+    - name: Copy Dynamic inventory
+      copy:
+        src: /home/ec2-user/myhosts.ini
+        dest: /home/ec2-user/myhosts.txt
+
+    - name: Creating Directory
+      file:
+        state: directory
+        dest: /home/ec2-user/test
+
+    - name: Copying
+      copy:
+        src: /home/ec2-user/myhosts.ini
+        dest: /opt/serveewr.txt
+    - name:
+      copy:
+        src: /home/ec2-user/myhosts.ini
+        dest: /home/ec2-user/service.yml
+    - name: Testing sublime text
+      copy:
+        src: /home/ec2-user/
+        dest: /home/Test
+
+    - name: trying
+      ansible.builtin.git:
+        repo: /VirtualHost101
+        dest: /partition { |e|  }

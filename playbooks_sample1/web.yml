@@ -1,0 +1,60 @@
+---
+- hosts: app
+  become: yes
+  handlers:
+    - name: Restart apache
+      ansible.builtin.service:
+        name: httpd
+        service: restarted
+
+  tasks:
+    - name: install httpd 
+      ansible.builtin.package:
+        name: [ "httpd" , "git" , "php" ]
+        state: present
+
+    - name: Enabling httpd
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: Copy welcome.conf template
+      ansible.builtin.template:
+        src: /home/ec2-user/Ansible/playbooks/templates/welcome.conf.j2
+        dest: /etc/httpd/conf.d/welcome.conf
+      notify:
+        - Restart apache 
+    
+    - name: updating httpd ports
+      ansible.builtin.template:
+        src: /home/ec2-user/Ansible/playbooks/templates/httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+      notify:
+        - Restart apache
+
+    - name: get source-code from git
+      ansible.builtin.git:
+        repo: https://github.com/VirtualHost101/ecommerce-website.git
+        dest: /var/www/html
+      notify:
+        - Restart apache
+
+    - name: trying date.php
+      ansible.builtin.copy:
+        src: /home/ec2-user/Ansible/playbooks/date.php
+        dest: /var/www/html/date.php
+      notify:
+        - Restart apache
+
+
+
+
+
+
+
+
+
+
+
+
+

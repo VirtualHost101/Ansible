@@ -1,0 +1,27 @@
+---
+- name: Configuring Apache2
+  hosts: all
+  tasks:
+    - name: Install Apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    - name: edit index.hmtl file
+      copy:
+        content: "Welcome"
+        dest: /var/www/html/index.html
+    - name: restart apache2
+      service:
+        name: apache2
+        state: restarted
+    - name: check apache response.1
+      uri:
+        url: http://172.31.17.25
+        status_code: 200
+    - name: check apache response.2
+      uri:
+        url: http://172.31.17.25
+        status_code: 200
+
+...

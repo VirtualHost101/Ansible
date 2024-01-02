@@ -1,0 +1,12 @@
+---
+- hosts: app
+  become: True
+  tasks:
+    - name: Common packages
+      ansible.builtin.package:
+        state: present
+        name:
+          - git
+          - wget
+          - unzip
+          - vim
